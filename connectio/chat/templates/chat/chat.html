@@ -1,0 +1,47 @@
+{% extends "chat/base.html" %}
+{% load static %}
+
+{% block chat_info %}
+    <img src="{{this.group_image.url}}" alt="" class="group-img">
+    <span class="group-name">
+        {{this.group_name}}
+    </span>
+    <span class="group-members">
+        <span></span>
+    </span>
+{% endblock %}
+
+{% block chat_room %}
+    {% for group in groups %}
+        <div class="group-tab {% if group == this %} tab-focused {% endif%}">
+            <img src="{{group.group_image.url}}" alt="">
+            <div class="group-tab-info">
+                <span>
+                    {{group.group_name}}
+                </span>
+            </div>
+        </div>
+        <hr>
+    {% endfor %}
+{% endblock %}
+
+{% block chat %}
+    {% for message in messages %}
+        <div class="message {% if message.author == user %} mine {% else %} other {% endif %}" data-pk="{{ message.pk }}">
+            <em class="author">
+                {% if message.author.profile.name != "anonymous" %}
+                    {{message.author.profile.name}} <small style="color:hsl(0 0% 40%);">~ @{{message.author.profile.username}}</small>
+                {% else %}
+                    @{{message.author.profile.username}}
+                {% endif %}
+            </em>
+            <p class="message-text">
+                {{ message.msg_content }}
+            </p>
+            <small class="time">{{ message.time }}</small>
+        </div>
+    {% endfor %}
+    <script src="{% static 'chat/create-msg.js' %}" defer></script>
+    <script src="{% static 'chat/live-chat.js' %}" defer></script>
+    <script src="{% static 'chat/delete-msg.js' %}" defer></script>
+{% endblock %}

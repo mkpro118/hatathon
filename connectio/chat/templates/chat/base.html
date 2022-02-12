@@ -1,0 +1,53 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Chat with {{ other }} - Connectio</title>
+    <link rel="shortcut icon" href="{% static 'interface/images/connectio-logo.ico' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'chat/main.css' %}">
+    <script src="{% static 'chat/profile-redirect.js' %}" defer></script>
+    <script src="{% static 'chat/change-chat.js' %}" defer></script>
+    <script src="{% static 'chat/disable-image-download.js' %}" defer></script>
+    <script src="{% static 'chat/search-group.js' %}" defer></script>
+</head>
+<body>
+    <div class='page-container'>
+        <aside class="status">
+            <div class="display-picture">
+                <img class="my-dp" src="{{ image }}" alt="DP">
+            </div>
+        </aside>
+        <aside class="chat-info">
+            {% block chat_info %}
+            {% endblock %}
+        </aside>
+        <aside class="search">
+            <div class="search-container">
+                <span class="search-btn" style="background-image: url({% static 'chat/search-btn.png' %})">
+
+                </span>
+                <input type="text" placeholder="Search...">
+            </div>
+        </aside>
+        <section class="chat-rooms">
+            {% block chat_room %}
+            {% endblock %}
+        </section>
+        <section class="chats">
+            <section class="messages">
+                {% block chat %}
+                {% endblock %}
+            </section>
+            <div class="create-message-container">
+                <input type="text" name="" placeholder="Write a message..." data-username="{{user.profile.username}}" data-name="{{user.profile.name}}">
+                <span class="send"></span>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

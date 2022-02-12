@@ -1,0 +1,16 @@
+{% extends "chat/base.html" %}
+{% load static %}
+
+{% block chat_room %}
+    {% for group in groups %}
+        <div class="group-tab">
+            <img src="{{group.group_image.url}}" alt="">
+            <div class="group-tab-info">
+                <span>
+                    {{group.group_name}}
+                </span>
+            </div>
+        </div>
+        <hr>
+    {% endfor %}
+{% endblock %}
