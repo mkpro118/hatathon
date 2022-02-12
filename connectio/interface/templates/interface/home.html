@@ -5,6 +5,41 @@
 {% block styles %}
     <link rel="stylesheet" href="{% static 'interface/home.css' %}">
 {% endblock styles %}
-
 {% block content %}
+<div class="box">
+    <h2><img src = "static/interface/images/connectio-pink-logo.png" class="logo">
+        ONNECTIO</h2>
+</div>
+<aside class="popup">
+
+</aside>
+<div class="obscure"></div>
+<div class="box2">
+    <div class="row">
+        <div class="row2">
+            <h3>Popular Events</h3>
+            <table>
+                <tr>
+                    <th>
+                        Host
+                    </th>
+                    <th>
+                        Event
+                    </th>
+                    <th>
+                        Location
+                    </th>
+                    <th>
+                        Date
+                    </th>
+                </tr>
+            {% for event in events %}
+                <tr>
+                    <td data-title>{{ event.host|truncatechars:12 }}</td><td>{{ event.title|truncatechars:17 }}</td> <td>{{ event.location|truncatechars:17 }}</td>  <td>{{     event.date }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
 {% endblock content %}
