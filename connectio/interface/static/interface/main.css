@@ -94,7 +94,7 @@ li.logo-container > a {
 
 
 main {
-    height: calc(100% - calc(10vh + 10vh));
+    min-height: calc(100% - calc(10vh + 10vh));
     background: url('images/event.jpg');
     background-size: cover;
     background-position: center;

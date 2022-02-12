@@ -15,20 +15,20 @@ def Register(request):
     if request.user.is_authenticated:
         return redirect('home')
     else:
-        return render(request, 'register.html', {})
+        return render(request, 'users/register.html', {})
 
 
 def Login(request):
     if request.user.is_authenticated:
         return redirect('home')
     else:
-        return render(request, 'login.html', {})
+        return render(request, 'users/login.html', {})
 
 
 @login_required(login_url='login')
 def Logout(request):
     logout(request)
-    return render(request, 'logout.html', {})
+    return render(request, 'users/logout.html', {})
 
 
 @login_required(login_url='login')
@@ -36,7 +36,11 @@ def Profile(request):
     if request.method == 'POST':
         return redirect('profile')
     else:
-        return render(request, 'profile.html', {})
+        context = {
+            'image': request.user.profile.image.url,
+            'name': request.user.profile.name,
+        }
+        return render(request, 'users/profile.html', context)
 
 
 def check_username_availability(request, username):

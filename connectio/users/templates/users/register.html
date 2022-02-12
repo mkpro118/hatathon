@@ -6,28 +6,46 @@
 {% endblock styles %}
 
 {% block content %}
+    <aside class="error-msg"></aside>
     <section class="register-card">
-        <section class="side1">
+        <section class="side1 active">
             <section class="username">
-                <label>Username <input type="text"></label>
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Pick a username" autocomplete="off">
             </section>
             <section class="email">
-                <label>Email <input type="email"></label>
-            </section>
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Enter your email">
+            </section autocomplete="off">
             <section class="password">
-                <label>Password <input type="password"></label>
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Choose a Password" autocomplete="off">
             </section>
             <section class="confirm-password">
-                <label>Password <input type="password"></label>
+                <label for="confirm-password">Password <small>(again)</small></label>
+                <input type="password" id="confirm-password" placeholder="Re-enter Password" autocomplete="off">
+            </section>
+            <section class="continue-1">
+                <button>
+                    Continue
+                </button>
             </section>
         </section>
         <section class="side2">
             <section class="location">
-                <label>Location <input type="text"></label>
+                <label for="location">Location</label>
+                <input type="text" id="location" placeholder="Where are you from?">
             </section>
             <section class="bio">
-                <label>Bio <input type="text"></label>
+                <label for="bio">Bio</label>
+                <textarea id="bio" rows="5" cols="30" placeholder="Tell others about yourself"></textarea>
+            </section>
+            <section class="continue-2">
+                <button>
+                    Register
+                </button>
             </section>
         </section>
     </section>
+    <script src="{% static 'users/register.js' %}" defer></script>
 {% endblock content %}
