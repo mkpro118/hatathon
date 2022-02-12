@@ -5,6 +5,8 @@ main {
     justify-content: center;
     align-items: center;
     position: relative;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 .error-msg {
@@ -25,7 +27,7 @@ main {
 .register-card {
     background: hsla(0, 0%, 0%, 0.9);
     aspect-ratio: 8 / 9;
-    width: 500px;
+    width: 450px;
     position: relative;
     font-size: 1.6rem;
     color: white;

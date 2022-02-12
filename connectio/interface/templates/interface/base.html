@@ -39,11 +39,23 @@
                         about
                     </a>
                 </li>
-                <li class="profile-container">
-                    <a class="nav-links" href="{% url 'profile' %}">
-                        <img src="{{ request.user.profile.image.url }}" alt="user image">
-                    </a>
-                </li>
+
+                {% if user.is_authenticated %}
+                    <li class="profile-container">
+                        <a class="nav-links" href="{% url 'profile/' {{username}} %}">
+                            <img src="{{ request.user.profile.image.url }}" alt="user image">
+                        </a>
+                    </li>
+                {% else %}
+                    <li class="profile-container">
+                        <a class="nav-links" href="{% url 'register' %}">
+                            Register
+                        </a> /
+                        <a class="nav-links" href="{% url 'login' %}">
+                            Login
+                        </a>
+                    </li>
+                {% endif %}
             </ul>
         </nav>
     </header>

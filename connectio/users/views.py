@@ -32,15 +32,17 @@ def Logout(request):
 
 
 @login_required(login_url='login')
-def Profile(request):
+def Profile(request, username):
     if request.method == 'POST':
         return redirect('profile')
     else:
         profile = request.user.profile
         context = {
             'image': profile.image.url,
+            'username': profile.username,
             'name': profile.name,
             'bio': profile.bio,
+            'owner': profile.username == username,
             'events': [
                 {
                     'title': 'Sudoku Night',

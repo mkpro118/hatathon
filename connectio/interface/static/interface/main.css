@@ -59,6 +59,12 @@ li.profile-container {
     text-align: center;
 }
 
+li.profile-container img {
+    aspect-ratio: 1 / 1;
+    height: 7vh;
+    border-radius: 50%;
+}
+
 li.logo-container > a {
     background: url('images/connectio-pink-logo.png');
     aspect-ratio: 1 / 1;
@@ -75,7 +81,7 @@ li.logo-container > a {
     position: relative;
 }
 
-.nav-links::after {
+.nav-links:not([href*="profile"])::after {
     position: absolute;
     content: "";
     inset: 0;
@@ -88,7 +94,6 @@ li.logo-container > a {
 }
 
 .nav-links:hover::after {
-    /* width: 100%; */
     transform: scaleX(1);
 }
 
