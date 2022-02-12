@@ -9,54 +9,9 @@
 
 {% block content %}
 <aside class="popup">
-    <div class="event-title">
-        <span class="title-info">
 
-        </span>
-    </div>
-    <div class="day-time-info">
-        <span>
-            <span class="dt-icon"></span>
-            <span>Date</span>
-        </span>
-        <span class="dt-data"></span>
-    </div>
-    <div class="location-info">
-        <span>
-            <span class="lc-icon"></span>
-            <span>Location</span>
-        </span>
-        <span class="lc-data"></span>
-    </div>
-    <div class="host-info">
-        <span>
-            <span class="ht-icon"></span>
-            <span>Host</span>
-        </span>
-        <span class="ht-data">
-        </span>
-    </div>
-    <div class="other-info">
-        <span>Event Details</span>
-        <span class="ot-data">
-                <ul>
-                    <li class="event-description">
-
-                    </li>
-                    <li class="event-attendance">
-
-                    </li>
-                    <li class="event-capacity">
-
-                    </li>
-                    <li class="event-cost">
-
-                    </li>
-                </ul>
-        </span>
-    </div>
 </aside>
-<div class="obscure active"></div>
+<div class="obscure"></div>
 <div class="box">
     <h2>@{{ username }}</h2>
     <br>
@@ -71,6 +26,11 @@
                 <button class="btn">
                     <p>
                         Edit Profile
+                    </p>
+                </button>
+                <button class="btn">
+                    <p>
+                        Log Out
                     </p>
                 </button>
             {% endif %}
@@ -97,5 +57,4 @@
         </div>
     </div>
 </div>
-<script src="{% static 'users/profile.js' %}" defer></script>
 {% endblock content %}
