@@ -36,9 +36,40 @@ def Profile(request):
     if request.method == 'POST':
         return redirect('profile')
     else:
+        profile = request.user.profile
         context = {
-            'image': request.user.profile.image.url,
-            'name': request.user.profile.name,
+            'image': profile.image.url,
+            'name': profile.name,
+            'bio': profile.bio,
+            'events': [
+                {
+                    'title': 'Sudoku Night',
+                    'date': '20-2-2022',
+                    'description': "Let's play sudoku",
+                    'location': 'Memorial Union',
+                    'attendance_count': 420,
+                    'cost': 'Free',
+                    'capacity': 690,
+                },
+                {
+                    'title': 'Bingo Night',
+                    'date': '11-4-2022',
+                    'description': "Let's play Bingo",
+                    'location': 'Union South',
+                    'attendance_count': 300,
+                    'cost': '$12.50',
+                    'capacity': 500,
+                },
+                {
+                    'title': 'Concert',
+                    'date': '5-5-2022',
+                    'description': "Chainsmokers concert",
+                    'location': 'Overture center',
+                    'attendance_count': 1300,
+                    'cost': '$50.00',
+                    'capacity': 2500,
+                },
+            ]
         }
         return render(request, 'users/profile.html', context)
 
@@ -55,11 +86,13 @@ def check_email_availability(request, email):
     return JsonResponse({'taken': taken})
 
 
-def register_user(request, username, email, password, *args, **kwargs):
+def register_user(request, username, email, password, location, bio, *args, **kwargs):
     username = username.lower()
     email = email.lower()
     new_user = NewUser.objects.create_user(username, email, password)
     new_user.save()
+    new_user.profile.location = location
+    new_user.profile.bio = bio
     account = authenticate(username=username, password=password)
     login(request, account)
     destination = kwargs.get('next')
