@@ -57,6 +57,37 @@
         </span>
     </div>
 </aside>
+<aside id="edit-profile">
+    <section>
+        <label for="name">
+            Name
+        </label>
+        <input type="text" id="name" value="{{ request.user.profile.name }}">
+    </section>
+    <section>
+        <label for="email">
+            Email
+        </label>
+        <input type="email" id="email" value="{{ request.user.email }}">
+    </section>
+    <section>
+        <label for="bio">
+            Bio
+        </label>
+        <textarea rows="3" cols="30" id="bio">{{ request.user.profile.bio }}</textarea>
+    </section>
+    <section>
+        <label for="location">
+            Location
+        </label>
+        <input type="text" id="location" value="{{ request.user.profile.location }}">
+    </section>
+    <section>
+        <button class="save">
+            Save Changes
+        </button>
+    </section>
+</aside>
 <div class="obscure"></div>
 <div class="box">
     <h2>@{{ username }}</h2>
@@ -69,12 +100,12 @@
             <h3>{{ name|truncatechars:12 }}</h3>
             <p class="bio">{{ bio }}</p>
             {% if owner %}
-                <button class="btn">
+                <button class="btn" id="edit">
                     <p>
                         Edit Profile
                     </p>
                 </button>
-                <button class="btn">
+                <button class="btn" id="logout">
                     <p>
                         Log Out
                     </p>

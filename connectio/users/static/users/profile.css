@@ -135,12 +135,12 @@ table tr:not(:first-child):hover {
     background: black;
 }
 
-.popup.display-active {
+.popup.display-active, #edit-profile.display-active {
     z-index: 27;
     display: flex;
 }
 
-.popup {
+.popup, #edit-profile {
     z-index: -1;
     position: absolute;
     top: 50%;
@@ -253,4 +253,39 @@ a.ht-data {
 .title-info, .other-info > span:first-of-type {
     text-decoration: underline;
     text-shadow: 1px 1px 2px hotpink;
+}
+
+#edit-profile.display-active {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#edit-profile.display-active > section {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#edit-profile.display-active > section:last-of-type {
+    justify-content: center;
+    align-items: center;
+}
+
+#edit-profile.display-active > section > input,
+#edit-profile.display-active > section > textarea {
+    width: 250px;
+    font-size: 1.2rem;
+    padding-left: 0.3rem;
+}
+
+.save {
+    font-size: 1.3rem;
+    border-radius: 999px;
+    padding: 0.4rem 1.3rem;
+    background: hotpink;
+    border: none;
+    outline: none;
 }

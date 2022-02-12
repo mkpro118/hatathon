@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-
+from django.http import JsonResponse
 from .models import Events
 
 # Create your views here.
@@ -36,3 +36,10 @@ def about(request):
         'site_title': 'About - Connectio',
     }
     return render(request, 'interface/about.html', context)
+
+
+@login_required(login_url='login')
+def CreateEvent(request, t, d, l, de, ct, cs, cp):
+    event = Events(title=t, date=d, location=l, attendance_count=ct, description=de, cost=cs, capacity=cp, host=request.user)
+    event.save()
+    return JsonResponse({'next': 'profile'})

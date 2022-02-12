@@ -66,6 +66,16 @@ def DefaultProfile(request):
     return redirect(f'profile/{request.user.username}')
 
 
+@login_required(login_url='login')
+def Edit(request, name, email, bio, location):
+    acc = NewUser.objects.get(username=request.user.username)
+    acc.profile.name = name
+    acc.profile.bio = bio
+    acc.profile.location = location
+    acc.save()
+    return JsonResponse({})
+
+
 def check_username_availability(request, username):
     username_to_check = username
     taken = NewUser.is_username_taken(username_to_check)

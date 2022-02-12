@@ -16,7 +16,7 @@
             </section>
             <section class="date">
                 <label for="date">Date</label>
-                <input type="date" id="date" placeholder="Enter your date">
+                <input type="date" id="date" placeholder="When's the event?">
             </section autocomplete="off">
             <section class="location">
                 <label for="location">Location</label>
@@ -35,12 +35,16 @@
         <section class="side2">
             <legend>Create an Event</legend>
             <section class="attendance_count">
-                <label for="attendance_count">Attedance Count</label>
-                <input type="number" id="attendance_count" placeholder="How many people are going?">
+                <label for="count">Number of Attendees</label>
+                <input type="number" id="count" placeholder="How many?">
+            </section>
+            <section class="capacity">
+                <label for="capacity">Event Capacity</label>
+                <input type="number" id="capacity" placeholder="How many?">
             </section>
             <section class="cost">
-                <label for="cost">Cost</label>
-                <input type="text" id="cost" placeholder="What is the cost of attendance?">
+                <label for="cost">Charges in $ <small>(0 if free)</small></label>
+                <input type="text" id="cost" placeholder="Ticket fee">
             </section>
             <section class="continue-2">
                 <button>
@@ -49,5 +53,5 @@
             </section>
         </section>
     </section>
-    <script src="{% static 'users/create.js' %}" defer></script>
+    <script src="{% static 'interface/create.js' %}" defer></script>
 {% endblock content %}
