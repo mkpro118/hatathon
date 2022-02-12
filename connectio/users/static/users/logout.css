@@ -1,0 +1,21 @@
+main{
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    font-size:1.3rem;
+    flex-direction:column; 
+    gap:30px; 
+    padding-top:20px;
+    padding-bottom:20px;
+}
+
+.box {
+    height: 250px;
+    width: 350px;
+    color:var(--font-color);
+    padding: 10px;
+    border: solid 3px black;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius:20px;
+  }
