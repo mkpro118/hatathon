@@ -5,5 +5,6 @@
 - Register an account
 - Look at other events listed around you
 - Join/create various events
+- Chat with organizers of events
 # Todo
 - Integrate google APIs for proximity calculations.
