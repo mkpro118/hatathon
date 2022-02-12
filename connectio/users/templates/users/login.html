@@ -1,1 +1,27 @@
-f
+{% extends 'interface/base.html' %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'users/login.css' %}">
+{% endblock styles %}
+
+{% block content %}
+    <section class="register-card">
+        <section class="side1 active">
+            <section class="username">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Enter Username" autocomplete="off">
+            </section>
+            <section class="password">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter Password" autocomplete="off">
+            </section>
+            <button class="btn">
+                <p>
+                    Login
+                </p>
+            </button>
+        </section>
+    </section>
+    <script src="{% static 'users/register.js' %}" defer></script>
+{% endblock content %}
