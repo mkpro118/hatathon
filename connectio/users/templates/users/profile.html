@@ -1,1 +1,35 @@
-f
+{% extends 'interface/base.html' %}
+
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'users/profile.css' %}">
+    <title>Profile</title>
+{% endblock styles %}
+
+{% block content %}
+<div class="box">
+    <h2>@{{ username }}</h2>
+    <br>
+    <div class="row">
+        <div class="row1">
+            <div class="image">
+                <img src="{{ image }}" alt="{{ name }}">
+            </div>
+            <h3>{{ name|truncatechars:12 }}</h3>
+            <p class="bio">{{ bio }}</p>
+            {% if owner %}
+                <button class="btn default">Edit Profile</button>
+            {% endif %}
+        </div>
+        <div class="row2">
+            <h2>Events:</h2>
+            {% for event in events %}
+            <div class=box-row>
+                <p><span>{{ event.title }}</span> <span>{{ event.location }}</span>  <span>{{ event.date }}</span></p>
+            </div>
+            {% endfor %}
+        </div>  
+    </div>
+</div>
+{% endblock content %}
