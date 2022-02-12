@@ -1,1 +1,20 @@
-f
+{% extends 'interface/base.html' %}
+
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'users/logout.css' %}">
+    <title>Logout</title>
+{% endblock styles %}
+
+{% block content %}
+<div class="box">
+    <div class="text">
+        <h2>Logged Out</h2>
+        <br>
+        <p>
+            okehios
+        </p>
+    </div>
+</div>
+{% endblock content %}
