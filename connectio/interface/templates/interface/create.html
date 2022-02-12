@@ -1,1 +1,53 @@
-f
+{% extends 'interface/base.html' %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'interface/create.css' %}">
+{% endblock styles %}
+
+{% block content %}
+    <aside class="error-msg"></aside>
+    <section class="register-card">
+        <section class="side1 active">
+            <legend>Create an Event</legend>
+            <section class="title">
+                <label for="title">Title</label>
+                <input type="text" id="title" placeholder="Pick a title" autocomplete="off">
+            </section>
+            <section class="date">
+                <label for="date">Date</label>
+                <input type="date" id="date" placeholder="Enter your date">
+            </section autocomplete="off">
+            <section class="location">
+                <label for="location">Location</label>
+                <input type="text" id="location" placeholder="Where is the event?">
+            </section>
+            <section class="description">
+                <label for="description">Description</label>
+                <textarea id="description" rows="6" cols="31" placeholder="Enter a description of your event"></textarea>
+            </section>
+            <section class="continue-1">
+                <button>
+                    Continue
+                </button>
+            </section>
+        </section>
+        <section class="side2">
+            <legend>Create an Event</legend>
+            <section class="attendance_count">
+                <label for="attendance_count">Attedance Count</label>
+                <input type="number" id="attendance_count" placeholder="How many people are going?">
+            </section>
+            <section class="cost">
+                <label for="cost">Cost</label>
+                <input type="text" id="cost" placeholder="What is the cost of attendance?">
+            </section>
+            <section class="continue-2">
+                <button>
+                    Create
+                </button>
+            </section>
+        </section>
+    </section>
+    <script src="{% static 'users/create.js' %}" defer></script>
+{% endblock content %}
