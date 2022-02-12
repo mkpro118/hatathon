@@ -6,6 +6,9 @@
 {% endblock styles %}
 
 {% block content %}
+    <aside class="error-msg">
+        Invalid Credentials!
+    </aside>
     <section class="register-card">
         <section class="side1 active">
             <section class="username">
@@ -23,5 +26,5 @@
             </button>
         </section>
     </section>
-    <script src="{% static 'users/register.js' %}" defer></script>
+    <script src="{% static 'users/login.js' %}" defer></script>
 {% endblock content %}

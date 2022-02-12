@@ -29,6 +29,7 @@ header {
 nav, ul {
     height: 100%;
     /* width: 100%; */
+    margin-inline: 1rem;
 }
 
 nav > ul {
@@ -57,7 +58,10 @@ li.about-container,
 li.profile-container {
     flex: 1;
     text-align: center;
+    color: var(--font-color);
 }
+
+li.profile-container { flex: 1.5;}
 
 li.profile-container img {
     aspect-ratio: 1 / 1;

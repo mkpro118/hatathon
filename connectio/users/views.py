@@ -2,7 +2,8 @@ from django.shortcuts import (render,
                               # HttpResponse,
                               redirect,)
 from django.http import JsonResponse
-from .models import NewUser
+from .models import NewUser, Profile as UserProfiles
+from interface.models import Events
 from django.contrib.auth.decorators import login_required
 
 from django.contrib.auth import login, authenticate, logout
@@ -36,43 +37,21 @@ def Profile(request, username):
     if request.method == 'POST':
         return redirect('profile')
     else:
-        profile = request.user.profile
+        _user = NewUser.objects.get(username__exact=username)
+        profile = _user.profile
+        events = Events.objects.filter(host=_user).order_by('date')
         context = {
             'image': profile.image.url,
             'username': profile.username,
             'name': profile.name,
             'bio': profile.bio,
-            'owner': profile.username == username,
-            'events': [
-                {
-                    'title': 'Sudoku Night',
-                    'date': '20-2-2022',
-                    'description': "Let's play sudoku",
-                    'location': 'Memorial Union',
-                    'attendance_count': 420,
-                    'cost': 'Free',
-                    'capacity': 690,
-                },
-                {
-                    'title': 'Bingo Night',
-                    'date': '11-4-2022',
-                    'description': "Let's play Bingo",
-                    'location': 'Union South',
-                    'attendance_count': 300,
-                    'cost': '$12.50',
-                    'capacity': 500,
-                },
-                {
-                    'title': 'Concert',
-                    'date': '5-5-2022',
-                    'description': "Chainsmokers concert",
-                    'location': 'Overture center',
-                    'attendance_count': 1300,
-                    'cost': '$50.00',
-                    'capacity': 2500,
-                },
-            ]
+            'owner': request.user.username == username,
+            'events': events,
         }
+
+        print(f'{request.user.username = }')
+        print(f'{username = }')
+        print("context['owner']", context['owner'])
         return render(request, 'users/profile.html', context)
 
 
@@ -95,6 +74,7 @@ def register_user(request, username, email, password, location, bio, *args, **kw
     new_user.save()
     new_user.profile.location = location
     new_user.profile.bio = bio
+    new_user.profile.save()
     account = authenticate(username=username, password=password)
     login(request, account)
     destination = kwargs.get('next')

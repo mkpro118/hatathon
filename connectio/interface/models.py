@@ -1,4 +1,6 @@
 from django.db import models
+from users.models import NewUser
+
 
 # Create your models here.
 
@@ -11,6 +13,7 @@ class Events(models.Model):
     description = models.CharField(max_length=500, blank=False, default='')
     cost = models.IntegerField(blank=True, default=0)
     capacity = models.IntegerField(blank=True, default=0)
+    host = models.ForeignKey(NewUser, on_delete=models.CASCADE)
 
     def __str__(self):
         return f'{self.title} - {self.description}'

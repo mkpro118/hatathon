@@ -27,7 +27,7 @@ main {
 .register-card {
     background: hsla(0, 0%, 0%, 0.9);
     aspect-ratio: 8 / 9;
-    width: 450px;
+    height: 70vh;
     position: relative;
     font-size: 1.6rem;
     color: white;

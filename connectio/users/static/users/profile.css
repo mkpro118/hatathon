@@ -3,15 +3,15 @@ main{
     justify-content: center;
     align-items:center;
     font-size:1.3rem;
-    flex-direction:column; 
-    gap:30px; 
+    flex-direction:column;
+    gap:30px;
     padding-top:20px;
     padding-bottom:20px;
 }
 
 .box {
     height: 500px;
-    width: 800px;
+    width: 1000px;
     color:var(--font-color);
     padding: 10px;
     border: solid 3px black;
@@ -22,6 +22,7 @@ main{
 
 .row{
     margin: 30px;
+    margin-left: 0px;
     display: flex;
     justify-content: space-between;
 }
@@ -40,31 +41,15 @@ h3{
     font-size: 16px;
     line-height:100%;
 }
-.row2{
+.row2 {
     flex-basis: 850px;
     border-radius: 10px;
     margin-bottom: 30px;
     padding: 20px 10px;
-}
-.box-row{
-    padding: 16px;
-    margin-top: 10px;
-    list-style-type: none;
-    border-top-color: gray;
-    border-top-style: solid;
-    border-top-width: 1px;
-}
-
-.box-row:last-child{
-    border-bottom-color: gray;
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
-}
-
-.box-row > p {
-    display:flex;
-    width: 500px;
-    justify-content: space-between;
+    width: 350px;
+    height: 350px;
+    overflow: auto;
+    overflow-x: hidden;
 }
 
 
@@ -83,15 +68,73 @@ h3{
     height: 30px;
     cursor: pointer;
     margin-top:10px;
-    border-radius:5px;
-}
-  
-.default {
+    border-radius: 999px;
+    overflow: hidden;
     border-color: #e7e7e7;
     color: white;
+    position: relative;
+    z-index: 20;
 }
-  
-.default:hover {
+
+.btn:hover > p {
     color:black;
+    z-index: 4;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    transition: color 800ms ease-in-out;
+}
+
+.btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    right: 100%;
     background: hotpink;
+    z-index: 3;
+    transition: all 800ms ease-in-out;
+}
+
+.btn:hover::before {
+    right: 0;
+}
+
+table {
+    width: 100%;
+    max-height: 350px;
+    border-collapse: collapse;
+}
+
+table tr {
+    height: 3rem;
+    border-top: 2px solid grey;
+}
+
+table tr:last-child {
+    border-bottom: 2px solid grey;
+}
+
+
+table tr:not(:first-child):hover {
+    transform: scale(1.05);
+    color: hotpink;
+}
+
+.obscure {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    z-index: -5;
+}
+
+.obscure.active {
+    opacity: 0.7;
+    z-index: 6;
+    background: black;
+}
+
+.popup {
+    z-index: 7;
 }

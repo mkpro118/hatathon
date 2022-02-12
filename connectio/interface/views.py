@@ -20,13 +20,10 @@ def date(request, date):
 
 
 def all_events(request):
-    context = {}
+    context = {
+        'events': Events.objects.all().order_by('date')
+    }
     return render(request, 'interface/all_events.html', context)
-
-
-def events(request, event):
-    context = {}
-    return render(request, 'interface/events.html', context)
 
 
 @login_required(login_url='')

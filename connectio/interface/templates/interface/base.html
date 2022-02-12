@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ site_title }}</title>
     <link rel="stylesheet" href="{% static 'interface/main.css' %}">
+    <link rel="shortcut icon" href="{% static 'interface/images/connectio-logo.ico' %}">
     {% block styles %}
     {% endblock styles %}
 </head>
@@ -42,7 +43,7 @@
 
                 {% if user.is_authenticated %}
                     <li class="profile-container">
-                        <a class="nav-links" href="{% url 'profile/' {{username}} %}">
+                        <a class="nav-links" href="{% url 'profile' request.user.profile.username %}">
                             <img src="{{ request.user.profile.image.url }}" alt="user image">
                         </a>
                     </li>

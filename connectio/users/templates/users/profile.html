@@ -8,6 +8,10 @@
 {% endblock styles %}
 
 {% block content %}
+<aside class="popup">
+
+</aside>
+<div class="obscure"></div>
 <div class="box">
     <h2>@{{ username }}</h2>
     <br>
@@ -19,17 +23,33 @@
             <h3>{{ name|truncatechars:12 }}</h3>
             <p class="bio">{{ bio }}</p>
             {% if owner %}
-                <button class="btn default">Edit Profile</button>
+                <button class="btn">
+                    <p>
+                        Edit Profile
+                    </p>
+                </button>
             {% endif %}
         </div>
         <div class="row2">
-            <h2>Events:</h2>
+            <table>
+                <tr>
+                    <th>
+                        Event
+                    </th>
+                    <th>
+                        Location
+                    </th>
+                    <th>
+                        Date
+                    </th>
+                </tr>
             {% for event in events %}
-            <div class=box-row>
-                <p><span>{{ event.title }}</span> <span>{{ event.location }}</span>  <span>{{ event.date }}</span></p>
-            </div>
-            {% endfor %}
-        </div>  
+                <tr>
+                    <td data-title>{{ event.title|truncatechars:17 }}</td> <td>{{ event.location|truncatechars:17 }}</td>  <td>{{     event.date }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
     </div>
 </div>
 {% endblock content %}
