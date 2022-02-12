@@ -65,10 +65,126 @@ table tr:not(:first-child):hover {
 
 .obscure.active {
     opacity: 0.7;
-    z-index: 6;
+    z-index: 20;
     background: black;
 }
 
+.popup.display-active {
+    z-index: 27;
+    display: flex;
+}
+
 .popup {
-    z-index: 7;
+    z-index: -1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    height: 500px;
+    width: 450px;
+    background: hsl(0, 0%, 42.0%);
+    padding: 0.4em 1.2em;
+    color: var(--font-color);
+    border-radius: 20px;
+    box-shadow: 0px 4px 5px 0px hotpink;
+}
+
+.dt-icon {
+    display: inline-block;
+    height: 20px;
+    aspect-ratio: 1 / 1;
+    background: url('../../../static/interface/images/clock.svg');
+    background-size: cover;
+}
+
+.lc-icon {
+    display: inline-block;
+    height: 20px;
+    aspect-ratio: 1 / 1;
+    background: url('../../../static/interface/images/location.svg');
+    background-size: cover;
+}
+
+.ht-icon {
+    display: inline-block;
+    height: 20px;
+    aspect-ratio: 1 / 1;
+    background: url('../../../static/interface/images/person.svg');
+    background-size: cover;
+}
+
+.ot-data > ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    font-size: 1rem;
+}
+
+.event-description::before {
+    content: "Description: ";
+    margin-right: 10px;
+}
+
+.event-attendance::before {
+    content: "Attendance: ";
+    margin-right: 10px;
+}
+
+.event-capacity::before {
+    content: "Capacity: ";
+    margin-right: 10px;
+}
+
+.event-cost::before {
+    content: "Cost: $";
+    margin-right: 10px;
+}
+
+.popup > div:first-of-type {
+    align-self: center;
+}
+
+.popup > div:first-of-type > span {
+    margin-inline: auto;
+    font-size: 2rem;
+}
+
+.popup > div:not(:last-of-type) {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 80%;
+    gap: 0.3rem;
+}
+
+.popup > div > span:first-child{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.other-info {
+    width: 100%;
+}
+
+.popup > div.other-info > span:first-child {
+    width: 100%;
+}
+
+.popup > div > span > span:first-child {
+    margin-right: 10px;
+}
+
+a.ht-data {
+    color: hotpink;
+}
+
+.title-info, .other-info > span:first-of-type {
+    text-decoration: underline;
+    text-shadow: 1px 1px 2px hotpink;
 }

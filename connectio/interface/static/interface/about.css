@@ -21,7 +21,7 @@ main{
   }
 
   .box2 {
-    height: 1000px;
+    height: 800px;
     width: 800px;
     color:var(--font-color);
     padding: 10px;

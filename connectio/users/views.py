@@ -58,11 +58,12 @@ def Profile(request, username):
             'owner': request.user.username == username,
             'events': events,
         }
-
-        print(f'{request.user.username = }')
-        print(f'{username = }')
-        print("context['owner']", context['owner'])
         return render(request, 'users/profile.html', context)
+
+
+@login_required(login_url='login')
+def DefaultProfile(request):
+    return redirect(f'profile/{request.user.username}')
 
 
 def check_username_availability(request, username):

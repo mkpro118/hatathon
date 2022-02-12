@@ -9,7 +9,53 @@
 
 {% block content %}
 <aside class="popup">
+    <div class="event-title">
+        <span class="title-info"></span>
+    </div>
+    <div class="day-time-info">
+        <span>
+            <span class="dt-icon"></span>
+            <span>Date: </span>
+        </span>
+        <span class="dt-data"></span>
+    </div>
+    <div class="location-info">
+        <span>
+            <span class="lc-icon"></span>
+            <span>Location: </span>
+        </span>
+        <span class="lc-data"></span>
+    </div>
+    <div class="host-info">
+        <span>
+            <span class="ht-icon"></span>
+            <span>Host: </span>
+        </span>
+        {% if owner %}
+            <span class="ht-data"></span>
+        {% else %}
+            <a class="ht-data"></a>
+        {% endif %}
+    </div>
+    <div class="other-info">
+        <span>Event Details</span>
+        <span class="ot-data">
+                <ul>
+                    <li class="event-description">
 
+                    </li>
+                    <li class="event-attendance">
+
+                    </li>
+                    <li class="event-capacity">
+
+                    </li>
+                    <li class="event-cost">
+
+                    </li>
+                </ul>
+        </span>
+    </div>
 </aside>
 <div class="obscure"></div>
 <div class="box">
@@ -31,7 +77,14 @@
                     </th>
                 </tr>
             {% for event in events %}
-                <tr>
+                <tr data-title="{{event.title}}"
+                data-date="{{event.date}}"
+                data-location="{{event.location}}"
+                data-host="{{event.host}}"
+                data-description="{{event.description}}"
+                data-attendance="{{event.attendance_count}}"
+                data-cost="{{event.cost}}"
+                data-capacity="{{event.capacity}}">
                     <td data-title>{{ event.host|truncatechars:12 }}</td><td>{{ event.title|truncatechars:17 }}</td> <td>{{ event.location|truncatechars:17 }}</td>  <td>{{     event.date }}</td>
                 </tr>
                 {% endfor %}
@@ -39,4 +92,5 @@
         </div>
     </div>
 </div>
+<script src="{% static 'interface/events.js' %}"></script>
 {% endblock content %}

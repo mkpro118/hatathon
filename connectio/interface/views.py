@@ -31,14 +31,6 @@ def events(request):
     return render(request, 'interface/events.html', context)
 
 
-@login_required(login_url='')
-def messages(request):
-    context = {
-        'site_title': 'Chat - Connectio',
-    }
-    return render(request, 'interface/messages.html', context)
-
-
 def about(request):
     context = {
         'site_title': 'About - Connectio',
