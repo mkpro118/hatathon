@@ -1,0 +1,60 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ site_title }}</title>
+    <link rel="stylesheet" href="{% static 'interface/main.css' %}">
+    {% block styles %}
+    {% endblock styles %}
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li class="logo-container" title="Home">
+                    <a href="{% url 'home' %}">
+
+                    </a>
+                </li>
+                <li class="home-container">
+                    <a class="nav-links" href="{% url 'home' %}">
+                        home
+                    </a>
+                </li>
+                <li class="events-container">
+                    <a class="nav-links" href="{% url 'all_events' %}">
+                        events
+                    </a>
+                </li>
+                <li class="messages-container">
+                    <a class="nav-links" href="{% url 'messages' %}">
+                        messages
+                    </a>
+                </li>
+                <li class="about-container">
+                    <a class="nav-links" href="{% url 'about' %}">
+                        about
+                    </a>
+                </li>
+                <li class="profile-container">
+                    <a class="nav-links" href="{% url 'profile' %}">
+                        <img src="{{ request.user.profile.image.url }}" alt="user image">
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock content %}
+    </main>
+    <footer>
+        <a href="https://github.com/xpoes123/hatathon" target="_blank" title="Links to GitHub">
+        </a>
+        <p>Powered by Django</p>
+    </footer>
+</body>
+</html>

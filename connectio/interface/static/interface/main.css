@@ -1,0 +1,124 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --background-color: hsl(0, 0%, 12.5%);
+    --font-color: hsl(0, 0%, 90%);
+
+    height: 100%;
+    width: 100%;
+    font-family: Verdana, Tahoma, sans-serif;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    background: var(--background-color);
+}
+
+header {
+    height: 10vh;
+    /* opacity: 0.4; */
+}
+
+nav, ul {
+    height: 100%;
+    /* width: 100%; */
+}
+
+nav > ul {
+    text-transform: uppercase;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    gap: 2em;
+    align-items: center;
+    justify-content: space-between;
+}
+
+li.logo-container {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+li.home-container,
+li.events-container,
+li.messages-container,
+li.about-container,
+li.profile-container {
+    flex: 1;
+    text-align: center;
+}
+
+li.logo-container > a {
+    background: url('images/connectio-pink-logo.png');
+    aspect-ratio: 1 / 1;
+    display: inline-block;
+    height: calc(0.75 * 10vh);
+    background-size: cover;
+}
+
+.nav-links {
+    text-align: center;
+    text-decoration: none;
+    color: var(--font-color);
+    font-size: 1.2rem;
+    position: relative;
+}
+
+.nav-links::after {
+    position: absolute;
+    content: "";
+    inset: 0;
+    top: calc(100% - 2px);
+    background: hotpink;
+    width: 100%;
+    transform: scaleX(0);
+    transition: transform 500ms ease-in-out;
+    transform-origin: center center;
+}
+
+.nav-links:hover::after {
+    /* width: 100%; */
+    transform: scaleX(1);
+}
+
+
+main {
+    height: calc(100% - calc(10vh + 10vh));
+    background: url('images/event.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+footer {
+    height: 10vh;
+    background: hotpink;
+    display: flex;
+    gap: 0.5em;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+footer > a {
+    background: url('./images/github-logo.png');
+    background-size: contain;
+    background-position: center center;
+    flex: 3;
+    aspect-ratio: 1 / 1;
+    margin-top: 2px;
+}
+
+footer > p {
+    flex: 1;
+}
