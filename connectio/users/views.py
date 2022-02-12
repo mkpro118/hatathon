@@ -16,20 +16,29 @@ def Register(request):
     if request.user.is_authenticated:
         return redirect('home')
     else:
-        return render(request, 'users/register.html', {})
+        context = {
+            'site_title': 'Register - Connectio',
+        }
+        return render(request, 'users/register.html', context)
 
 
 def Login(request):
     if request.user.is_authenticated:
         return redirect('home')
     else:
-        return render(request, 'users/login.html', {})
+        context = {
+            'site_title': 'Login - Connectio',
+        }
+        return render(request, 'users/login.html', context)
 
 
 @login_required(login_url='login')
 def Logout(request):
     logout(request)
-    return render(request, 'users/logout.html', {})
+    context = {
+        'site_title': 'Logout - Connectio',
+    }
+    return render(request, 'users/logout.html', context)
 
 
 @login_required(login_url='login')
@@ -41,6 +50,7 @@ def Profile(request, username):
         profile = _user.profile
         events = Events.objects.filter(host=_user).order_by('date')
         context = {
+            'site_title': f"@{username}'s Profile - Connectio",
             'image': profile.image.url,
             'username': profile.username,
             'name': profile.name,

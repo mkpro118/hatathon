@@ -138,3 +138,67 @@ table tr:not(:first-child):hover {
 .popup {
     z-index: 7;
 }
+
+.popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    height: 500px;
+    width: 450px;
+    background: hsl(0, 0%, 42.0%);
+    padding-left: 2em;
+}
+
+.dt-icon {
+    display: inline-block;
+    height: 24px;
+    aspect-ratio: 1 / 1;
+    background: url('../../../static/interface/images/clock.svg');
+    background-size: cover;
+}
+
+.lc-icon {
+    display: inline-block;
+    height: 24px;
+    aspect-ratio: 1 / 1;
+    background: url('../../../static/interface/images/location.svg');
+    background-size: cover;
+}
+
+.ht-icon {
+    display: inline-block;
+    height: 24px;
+    aspect-ratio: 1 / 1;
+    background: url('../../../static/interface/images/person.svg');
+    background-size: cover;
+}
+
+.ot-data > ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    font-size: 1rem;
+}
+
+.event-description::before {
+    content: "Description: ";
+}
+
+.event-attendance::before {
+    content: "Attendance: ";
+}
+
+.event-capacity::before {
+    content: "Capacity: ";
+}
+
+.event-cost::before {
+    content: "Cost: $";
+}
+

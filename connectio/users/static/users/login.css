@@ -24,7 +24,7 @@ main {
 
 .register-card {
     background: hsla(0, 0%, 0%, 0.9);
-    aspect-ratio: 1/1;
+    aspect-ratio: 3 / 2;
     width: 500px;
     position: relative;
     font-size: 1.6rem;
@@ -89,30 +89,8 @@ main {
     z-index: 20;
 }
 
-.btn:hover > p {
+.btn:hover{
     color:black;
-    z-index: 4;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    transform: translate(-50%, -50%);
-    transition: color 800ms ease-in-out;
-    /*
     background: hotpink;
-    border-color: hotpink; */
-}
-
-.btn::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    right: 100%;
-    background: hotpink;
-    z-index: 3;
-    transition: all 800ms ease-in-out;
-}
-
-.btn:hover::before {
-    right: 0;
+    border-color: hotpink;
 }

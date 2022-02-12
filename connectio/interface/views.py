@@ -7,22 +7,25 @@ from .models import Events
 
 
 def home(request):
-    context = {}
+    events = Events.objects.all().order_by('-attendance_count')
+    events = events[:5] if len(events) > 5 else events
+    context = {
+        'site_title': 'Connectio',
+        'events': events,
+    }
     return render(request, 'interface/home.html', context)
 
 
 def create(request):
-    context = {}
+    context = {
+        'site_title': 'Create Event - Connectio',
+    }
     return render(request, 'interface/create.html', context)
-
-
-def date(request, date):
-    context = {}
-    return render(request, 'interface/date.html', context)
 
 
 def events(request):
     context = {
+        'site_title': 'Events - Connectio',
         'events': Events.objects.all().order_by('date')
     }
     return render(request, 'interface/events.html', context)
@@ -30,17 +33,14 @@ def events(request):
 
 @login_required(login_url='')
 def messages(request):
-    context = {}
+    context = {
+        'site_title': 'Chat - Connectio',
+    }
     return render(request, 'interface/messages.html', context)
 
 
 def about(request):
-    context = {}
-    return render(request, 'interface/about.html', context)
-
-
-def ifdfa(request):
     context = {
-        'site_title': 'Connectio',
+        'site_title': 'About - Connectio',
     }
-    return render(request, 'interface/base.html', context)
+    return render(request, 'interface/about.html', context)
