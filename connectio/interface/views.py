@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
+from .models import Events
+
 # Create your views here.
 
 
@@ -19,11 +21,11 @@ def date(request, date):
     return render(request, 'interface/date.html', context)
 
 
-def all_events(request):
+def events(request):
     context = {
         'events': Events.objects.all().order_by('date')
     }
-    return render(request, 'interface/all_events.html', context)
+    return render(request, 'interface/events.html', context)
 
 
 @login_required(login_url='')
